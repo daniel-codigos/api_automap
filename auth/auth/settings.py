@@ -14,9 +14,7 @@ from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
 import os
-load_dotenv()
-
-# Acceder a las credenciales
+load_dotenv("cred.env")
 secret = os.getenv("secret")
 uri = os.getenv("uri")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
