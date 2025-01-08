@@ -14,7 +14,8 @@ from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
 import os
-load_dotenv("cred.env")
+ruta = os.getcwd()
+load_dotenv(ruta+"/api_map/"+"cred.env")
 secret = os.getenv("secret")
 uri = os.getenv("uri")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
