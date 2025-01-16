@@ -121,7 +121,7 @@ celerybeat.pid
 
 # Environments
 .env
-cred.env
+auth/cred.env
 .venv
 env/
 venv/

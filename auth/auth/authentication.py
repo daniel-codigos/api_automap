@@ -16,8 +16,7 @@ import os
 
 # Cargar el archivo .env
 ruta = os.getcwd()
-load_dotenv(ruta+"/api_map/"+"cred.env")
-
+load_dotenv(ruta+"/cred.env")
 
 SECRET_KEY = os.getenv("secret")
 
