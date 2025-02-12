@@ -35,3 +35,9 @@ class save_user(ModelSerializer):
     class Meta:
         model = SaveUser
         fields = '__all__'
+
+
+class save_fin_data(ModelSerializer):
+    class Meta:
+        model = SaveFinData
+        fields = '__all__'

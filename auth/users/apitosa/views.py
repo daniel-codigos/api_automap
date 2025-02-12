@@ -35,6 +35,12 @@ def get_off(request):
         print("a lo q estamos ja")
         print(info)
         if info:
+            data = {"user":user.id,"json":{"lista":str(request.data['info'])}}
+            serializer = save_fin_data(data=data)
+            if serializer.is_valid(raise_exception=True):
+                print("todo ok vamos a guardar!")
+                print("-+-+-+-+-+-+-+-+-++-+-+-+-+-+-+-+-+-+")
+                serializer.save()
             creden_info = {'user': info.username_infocol, 'passwd': info.password_infocol}
             username = creden_info['user']
             password = creden_info['passwd']

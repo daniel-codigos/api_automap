@@ -48,7 +48,7 @@ class buscar_parte():
                     print("mooodddtext")
                     eltext.clear()
                     eltext.send_keys(modpush[1]+modpush[2]+"  "+self.todoParte['descripcion'])
-            sleep(150)
+            sleep(60)
         else:
             driver.find_element(By.XPATH, '//table[@id="tblServicios"]/tbody/tr[2]').click()
 
@@ -69,6 +69,6 @@ class buscar_parte():
             driver.execute_script("javascript:aceptarDescuento()")
             print("mi loco tate al loro q fuimos con sleep 150s 2")
             print(self.todoParte)
-            sleep(150)
+            sleep(60)
         # llamamos para q inicie func de descripcion del àrte y le damos driver para q tenga como seguir :D
         return driver

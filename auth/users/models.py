@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 # Create your models here.
- #hora 1:50:25
 class User(AbstractUser):
     name = models.CharField(max_length=8)
     username = models.CharField(unique=True, max_length=10)
@@ -66,3 +65,10 @@ class SaveUser(models.Model):
         texto = "{0} ({1})"
         return texto.format(self.username_infocol,self.password_infocol)
         #return {'username':self.username_infocol,'password':self.password_infocol}
+
+
+class SaveFinData(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+   # id = models.IntegerField()
+    # Un campo de tipo JSONField para almacenar datos en formato JSON
+    json = models.JSONField()

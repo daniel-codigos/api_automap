@@ -88,10 +88,10 @@ class sacar_partes():
                 print(e)
         elif os.name == 'posix':
             print('El sistema operativo es Linux o Unix')
-            chrome_options.add_argument('--disable-gpu')
-            chrome_options.add_argument("--no-sandbox") # linux only
-            chrome_options.add_argument('--disable-dev-shm-usage')
-            chrome_options.add_argument("--headless")
+            #chrome_options.add_argument('--disable-gpu')
+            #chrome_options.add_argument("--no-sandbox") # linux only
+            #chrome_options.add_argument('--disable-dev-shm-usage')
+            #chrome_options.add_argument("--headless")
             self.driver = webdriver.Chrome(options=chrome_options)  # , options=chrome_options)D:\windows things\apps
         else:
             print('El sistema operativo no es compatible')
