@@ -26,7 +26,7 @@ class crear_asistencia():
                             for num,cadaBuscar in enumerate(buscar):
                                 if len(x.split(cadaBuscar)) > 1:
                                     if num == 0:
-                                        lamovi = float(x.split(': ')[1].split(' ')[0].replace(',','.'))/1.08
+                                        lamovi = float(x.split(': ')[1].split(' ')[0].replace(',','.')) / 1.12
                                         self.precio = str(round(lamovi,2))
                                     else:
                                         self.porcentaje = x.split('IVA')[1].split(':')[1].replace(' ', '')
