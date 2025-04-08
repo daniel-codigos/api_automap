@@ -15,6 +15,9 @@ from datetime import timedelta
 from dotenv import load_dotenv
 import os
 ruta = os.getcwd()
+print(ruta+"/api_map/auth/")
+print(ruta)
+#load_dotenv(ruta+"/api_map/auth/cred.env")
 load_dotenv(ruta+"/cred.env")
 secret = os.getenv("secret")
 uri = os.getenv("uri")

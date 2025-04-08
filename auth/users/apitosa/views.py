@@ -17,7 +17,6 @@ from asgiref.sync import async_to_sync
 
 
 
-
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def get_off(request):
@@ -90,11 +89,13 @@ class getConfig(APIView):
         else:
             return Response({"Error": "¡No se encontraron datos!"})
 
-@api_view(['GET'])
+@api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def get_in(request):
     #start
     user = request.user
+    print("_----------------_____------------")
+    print(request.data['infotest'])
     vars.importes.clear()
     vars.listado_partes.clear()
     vars.info_todos_partes.clear()
@@ -104,7 +105,7 @@ def get_in(request):
     cerebro = config.get(request).data
     print("cerebroo:")
     print(cerebro)
-    if test_desc == "si":
+    if request.data['infotest']:
         info = user.save_bad_set.all()
         print(info)
         cont = 0
