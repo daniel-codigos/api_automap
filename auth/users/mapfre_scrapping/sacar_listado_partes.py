@@ -81,15 +81,15 @@ class SacarListado:
                             cada_linea.replace('\n', "").replace('\t', "").replace(")", "").replace("(", "")
                         )
                     print("Datos obtenidos del script:", info_todos_partes)
-        print(info_todos_partes)
+        #print(info_todos_partes)
         print(len(info_todos_partes))
         id_cont = 0
         for num,cada_parte in enumerate(info_todos_partes):
             #print(cada_parte)
-            print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-            print(num)
-            print(cada_parte)
-            print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+            #print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+            #print(num)
+            #print(cada_parte)
+            #print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
             try:
                 if cada_parte.split("','")[50] and len(cada_parte.split("','")[50]) > 70: #and cada_parte.split("','")[2][0] != "M":
                     #print("esta de arriba ha entrado xd")
@@ -100,6 +100,8 @@ class SacarListado:
                     for cada_word in checker:
                         if 'FIN' in cada_word.text:
                             print("seeeeeeeeeeeeeeeeee")
+                            #print(cada_word)
+                            #print("-+-+-+-+-+-+-+-+-+-+--++-+--+-+-++-+-+-+-")
                             checked = True
                         else:
                             checked = False
@@ -122,7 +124,10 @@ class SacarListado:
                     if checked:
                         if num_expediente[0] in ["L","V"]:
                             #AQUIIIIIIIII
+                            print("-+-+-+-+-+-++-+--++--+-++-+--+-++-+--+-+")
+                            print(descripcion)
                             analiza(descripcion, brico,self.cerebro)
+
                         elif num_expediente[0] == "M":
                             desc_exp_ex = cada_parte.split("','")[28]
                             #buscar aqui si iberdrola o si verti o q y tmbn si 551€ o 3h
@@ -138,7 +143,10 @@ class SacarListado:
                         elif num_expediente[0] == "A":
                             crear_asistencia(descripcion)
                         #meter si es bricolaje o nooo de info!!!! sacarla de donde la descripcion
+                        print("asdasdasdasdasd")
+                        print(importes)
                         if importes:
+                            print("no me rayess1")
                             id_cont += 1
                             if cp in ["28007", "28045"]:
                                 if len(importes) > len(listado_partes):
@@ -154,6 +162,7 @@ class SacarListado:
                                     importes[len(listado_partes)-1].append("guardia")
                                 else:
                                     print("problemas")
+                            print("no me rayess2")
                             #if tengo q hacer para que no me meta el parte q no tiene importes:
                             listado_partes.append({
                                 "id_ex":id_cont,
@@ -172,7 +181,7 @@ class SacarListado:
             except Exception as e:
                 # Manejar cualquier excepción aquí
                 print("feo feo feo errorazo primikooooooo tratando de sacar infoo bruuu")
-                print(cada_parte)
+                #print(cada_parte)
                 print(f"Se ha producido una excepción del tipo {type(e)}: {e}")
 
         return listado_partes

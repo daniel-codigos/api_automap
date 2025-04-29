@@ -12,6 +12,7 @@ from ..mapfre_scrapping.normal.interpreta_texto import analiza
 from ..mapfre_scrapping.asistencias.interpreta_texto_asistencia import crear_asistencia
 from ..mapfre_scrapping.multimap.interpreta_multi import crear_multi
 from .descontar_partes import *
+from webdriver_manager.firefox import GeckoDriverManager
 from dotenv import load_dotenv
 from .vars import *
 from bs4 import BeautifulSoup
@@ -92,7 +93,9 @@ class sacar_partes():
             #chrome_options.add_argument("--no-sandbox") # linux only
             #chrome_options.add_argument('--disable-dev-shm-usage')
             #chrome_options.add_argument("--headless")
+            #chrome_options.add_argument("--window-size=1920,1080")
             self.driver = webdriver.Chrome(options=chrome_options)  # , options=chrome_options)D:\windows things\apps
+
         else:
             print('El sistema operativo no es compatible')
         self.driver.get(url_login[0])
@@ -100,16 +103,19 @@ class sacar_partes():
         # Esperar hasta que el botón esté presente
         try:
             # Espera hasta 10 segundos por el elemento
-            if not EC2.presence_of_element_located((By.ID, "onetrust-accept-btn-handler")) and not EC2.presence_of_element_located((By.ID, "username")):
+            try:
+                # Espera hasta 10 segundos que aparezca el botón
                 element = WebDriverWait(self.driver, 10).until(
-                    EC2.presence_of_element_located((By.ID, "onetrust-accept-btn-handler"))
+                    EC.presence_of_element_located((By.ID, "onetrust-accept-btn-handler"))
                 )
-                # Imprime el elemento si se encuentra
-                print(element)
-                self.driver.find_element(By.ID, "onetrust-accept-btn-handler").click()
-            # id = cboxClose
+                # Si llega aquí, es que el botón se encontró
+                print("Se encontró el botón:", element)
+                element.click()
+            except:
+                print("No se encontró el botón dentro de 10 segundos")
             print("lol")
-            sleep(20)
+            #self.driver.find_element(By.ID, "onetrust-accept-btn-handler").click()
+            sleep(5)
             if self.driver.find_elements(By.ID, "cboxClose"):
                 print(self.driver.find_element(By.ID, "cboxClose").tag_name)
                 self.driver.find_element(By.ID, "cboxClose").click()
@@ -117,7 +123,10 @@ class sacar_partes():
             print("lol")
             for x in data:
                 self.driver.find_element(By.ID, x[0]).send_keys(x[1])
-            self.driver.find_element(By.ID, "mapfre-frmLogin-Submit").click()
+            button = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.ID, "mapfre-frmLogin-Submit"))
+            )
+            button.click()
             sleep(5)
             print("lol")
             self.driver.get(url_login[1])

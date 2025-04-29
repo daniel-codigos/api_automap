@@ -1,7 +1,7 @@
 from ..vars import *
 from urllib.parse import unquote
 import difflib
-
+import json
 
 def saveInfo(data):
     data1 = "txtinfo.txt"
@@ -31,7 +31,10 @@ class analiza():
     def __init__(self,texto, brico, cerebro):
         print("ni entra xd")
         self.brico = brico
+        print("cerebro es tipo:", type(cerebro))
+        #print("Contenido real de cerebro =", repr(cerebro))
         print("aqui si xd jaja")
+        print("Primeros caracteres y sus códigos:")
         self.rem = cerebro["remplazos"]
         self.fallida = self.array_to_rem(cerebro["fallida"])
         self.anulado = self.array_to_rem(cerebro["anulado"])
